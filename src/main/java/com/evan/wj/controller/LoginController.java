@@ -10,16 +10,18 @@ import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
 
-@Controller
+//@Controller
+@RestController
+@CrossOrigin
 public class LoginController {
 
     @Autowired
     UserService userService;
 
-    @CrossOrigin
-    @PostMapping(value = "/api/login")
-    @ResponseBody
+//    /@PostMapping(value = "/login")
+    @PostMapping("/login")
     public Result login(@RequestBody User requestUser, HttpSession session) {
+        System.out.println(requestUser.getUsername());
         String username = requestUser.getUsername();
         username = HtmlUtils.htmlEscape(username);
 

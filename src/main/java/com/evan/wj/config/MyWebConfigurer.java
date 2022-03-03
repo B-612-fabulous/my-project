@@ -12,7 +12,7 @@ public class MyWebConfigurer implements WebMvcConfigurer {
     public LoginInterceptor getLoginIntercepter() {
         return new LoginInterceptor();
     }
-
+//d
     @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(getLoginIntercepter()).addPathPatterns("/**").excludePathPatterns("/index.html");
