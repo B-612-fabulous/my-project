@@ -11,7 +11,7 @@ public class LoginServiceImpl implements ILoginService {
     @Autowired
     private ILoginDao loginDao;
     @Override
-    public void getLogin(UserBo user) {
+    public void getLogin(UserBo user) {//进行登录逻辑处理
         UserBo loginUser = loginDao.getLogin(user);
         if(loginUser != null){
 
