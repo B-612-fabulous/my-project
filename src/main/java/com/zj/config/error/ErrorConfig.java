@@ -1,4 +1,4 @@
-package com.evan.wj.error;
+package com.zj.config.error;
 
 import org.springframework.boot.web.server.ErrorPageRegistrar;
 import org.springframework.boot.web.server.ErrorPage;

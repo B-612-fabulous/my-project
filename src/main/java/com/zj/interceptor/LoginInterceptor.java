@@ -1,6 +1,6 @@
-package com.evan.wj.interceptor;
+package com.zj.interceptor;
 
-import com.evan.wj.pojo.User;
+import com.zj.login.model.UserBo;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -24,7 +24,7 @@ public class LoginInterceptor  implements HandlerInterceptor{
         String page = uri;
 
         if(begingWith(page, requireAuthPages)){
-            User user = (User) session.getAttribute("user");
+            UserBo user = (UserBo) session.getAttribute("user");
             if(user==null) {
                 httpServletResponse.sendRedirect("login");
                 return false;
