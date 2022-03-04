@@ -8,4 +8,11 @@
         select * from t_user where userName=#{userName} and passWord=#{passWord}
     </select>
 
+    <insert id="insert" useGeneratedKeys="true" >
+        INSERT INTO
+            t_user (username, password,  phone, address,  )
+        VALUES
+            (#{username}, #{password},  #{phone},  #{address},  )
+    </insert>
+
 </mapper>

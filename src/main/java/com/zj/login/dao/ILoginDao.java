@@ -6,5 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ILoginDao {
+
      UserBo getLogin(UserBo user);
+     Integer insert(UserBo user);
+
 }
