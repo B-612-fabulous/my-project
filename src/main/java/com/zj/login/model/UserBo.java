@@ -9,6 +9,7 @@ public class UserBo {
     private String phone;
     private String pic;
     private String address;
+    private String trueName;
 
     public UserBo() {
     }
@@ -68,6 +69,14 @@ public class UserBo {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getTrueName() {
+        return trueName;
+    }
+
+    public void setTrueName(String trueName) {
+        this.trueName = trueName;
     }
 
     @Override
