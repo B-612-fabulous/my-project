@@ -16,15 +16,13 @@ public class LoginController {
     private ILoginService loginService = null;
     @PostMapping("/login")
     public Result login(@RequestBody UserBo user, HttpSession session) {
-        loginService.getLogin(user);
-
-//        return new Result(200);
-        if (null == user) {
-            return new Result(400);
-        } else {
-            session.setAttribute("user", user);
-            return new Result(200);
+        Result rt = null;
+        try {
+            rt = loginService.getLogin(user);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return rt;
     }
     @PostMapping("/reg")
     public JsonResult<Void> reg(UserBo user) {
