@@ -10,9 +10,9 @@
 
     <insert id="insert" useGeneratedKeys="true" >
         INSERT INTO
-            t_user (userName, passWord,  phone, address  )
+            t_user (userName, passWord,  phone, address,trueName  )
         VALUES
-            (#{userName}, #{passWord},  #{phone},  #{address}  )
+            (#{userName}, #{passWord},  #{phone},  #{address}, #{trueName})
     </insert>
 
     <select id="selectByusername" parameterType="String" resultType="com.zj.login.model.UserBo">
