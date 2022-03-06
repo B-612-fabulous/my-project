@@ -16,10 +16,20 @@ public class CommunityVegetablesController {
     @Autowired
     private ICommunityVegetablesService communityVegetablesService = null;
     @PostMapping("/addCommunityVegetables")
-    public Result login(@RequestBody CommunityVegetablesBo cb) {
+    public Result addCommunityVegetables(@RequestBody CommunityVegetablesBo cb) {
         Result rt = null;
         try {
             rt = communityVegetablesService.addCommunityVegetables(cb);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rt;
+    }
+    @PostMapping("/getCommunityVegetablesList")
+    public Result getCommunityVegetablesList(@RequestBody CommunityVegetablesBo cb) {
+        Result rt = null;
+        try {
+            rt = communityVegetablesService.getCommunityVegetablesList(cb);
         } catch (Exception e) {
             e.printStackTrace();
         }

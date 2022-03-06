@@ -5,4 +5,6 @@ import com.zj.config.Result.Result;
 
 public interface ICommunityVegetablesService {
     Result addCommunityVegetables(CommunityVegetablesBo cb);
+
+    Result getCommunityVegetablesList(CommunityVegetablesBo cb);
 }

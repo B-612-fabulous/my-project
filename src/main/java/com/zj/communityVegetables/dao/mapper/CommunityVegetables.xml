@@ -9,4 +9,13 @@
         VALUES
             (#{id},#{title},#{price},#{fmImg},#{preferentialRules},#{commodityDesc},#{isSeckill},#{createDate},#{createPeople},#{isDelete})
     </insert>
+    <select id="getCommunityVegetablesList" parameterType="com.zj.communityVegetables.model.CommunityVegetablesBo" resultType="com.zj.communityVegetables.model.CommunityVegetablesBo">
+        SELECT
+            tcv.*,
+            tu.trueName
+        FROM
+            t_community_vegetables tcv
+            LEFT JOIN t_user tu ON tcv.createPeople=tu.id
+        WHERE tcv.isDelete=0
+    </select>
 </mapper>
