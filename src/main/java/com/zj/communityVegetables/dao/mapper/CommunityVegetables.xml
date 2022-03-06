@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zj.communityVegetables.dao.ICommunityVegetablesDao">
+    <insert id="addCommunityVegetables" parameterType="com.zj.communityVegetables.model.CommunityVegetablesBo">
+        INSERT INTO
+            t_community_vegetables (id,title,price,fmImg,preferentialRules,commodityDesc,isSeckill,createDate,createPeople,isDelete)
+        VALUES
+            (#{id},#{title},#{price},#{fmImg},#{preferentialRules},#{commodityDesc},#{isSeckill},#{createDate},#{createPeople},#{isDelete})
+    </insert>
+</mapper>
