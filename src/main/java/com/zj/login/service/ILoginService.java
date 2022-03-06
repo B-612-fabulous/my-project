@@ -7,7 +7,9 @@ public interface ILoginService {
 
     Result  getLogin(UserBo user);
 
-    void reg(UserBo user);
+    Boolean reg(UserBo user);
+
+    UserBo selectByusername(UserBo userBo);
 
 
 }

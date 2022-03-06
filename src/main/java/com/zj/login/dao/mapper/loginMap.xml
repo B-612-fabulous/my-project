@@ -10,9 +10,15 @@
 
     <insert id="insert" useGeneratedKeys="true" >
         INSERT INTO
-            t_user (username, password,  phone, address,  )
+            t_user (userName, passWord,  phone, address  )
         VALUES
-            (#{username}, #{password},  #{phone},  #{address},  )
+            (#{userName}, #{passWord},  #{phone},  #{address}  )
     </insert>
+
+    <select id="selectByusername" parameterType="String" resultType="com.zj.login.model.UserBo">
+        select * from t_user where userName=#{userName}
+    </select>
+
+
 
 </mapper>

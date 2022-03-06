@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface ILoginDao {
 
      UserBo getLogin(UserBo user);
+
      Integer insert(UserBo user);
+     UserBo selectByusername(String username);
 
 }

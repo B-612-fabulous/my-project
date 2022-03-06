@@ -3,7 +3,7 @@ package com.zj.login.model;
 import java.util.Objects;
 
 public class UserBo {
-    private int id;
+      private int id;
     private String userName;
     private String passWord;
     private String phone;

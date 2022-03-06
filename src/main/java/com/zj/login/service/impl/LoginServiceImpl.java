@@ -8,6 +8,7 @@ import com.zj.login.model.UserBo;
 import com.zj.login.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.security.util.Password;
 
 import java.util.UUID;
 
@@ -39,21 +40,48 @@ public class LoginServiceImpl implements ILoginService {
         }
         return rt;
     }
-    public void reg(UserBo user) {
 
-        String username = user.getUserName();
+
+
+    @Override
+    public Boolean reg(UserBo userBo) {
+        Result rt = new Result();
+
+//        String username = userBo.getUserName();
+//        String passWord = userBo.getPassWord();
+//        user.setUserName(username);
+//        user.setPassWord(passWord);
+
 //        String salt = UUID.randomUUID().toString().toUpperCase();
 //        String md5Password = getMd5PassWord(user.getPassWord(), salt);
 //        user.setPassWord(password);
-        // 调用持久层的User findByUsername(String username)方法，根据用户名查询用户数据
+        UserBo userBo1 = selectByusername(userBo);
+        if (userBo1 != null) {
 
-        // 判断查询结果是否不为null
-//        if (result != null) {
-//             是：表示用户名已被占用，则抛出UsernameDuplicateException异常
 //            throw new UsernameDuplicateException("尝试注册的用户名[" + username + "]已经被占用");
 //            System.out.println("尝试注册的用户名[" + username + "]已经被占用");
-        Integer rows = loginDao.insert(user);
+            rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
+            rt.setMsg("用户名已存在");
+            return false;
 
+        } else{
+            Integer rows = loginDao.insert(userBo);
+            return true;
         }
+
+
+
+
+    }
+
+    @Override
+    public UserBo selectByusername(UserBo userBo) {
+        UserBo userBo1 = loginDao.selectByusername(userBo.getUserName());
+        return userBo1;
+
+    }
+
+
+
 
 }
