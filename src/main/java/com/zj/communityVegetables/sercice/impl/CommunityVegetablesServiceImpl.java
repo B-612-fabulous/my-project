@@ -7,6 +7,7 @@ import com.zj.config.Result.Result;
 import com.zj.config.common.GlobalConstant;
 import com.zj.config.common.TimeUtil;
 import com.zj.config.common.UuidUtil;
+import com.zj.login.model.UserBo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,4 +53,48 @@ public class CommunityVegetablesServiceImpl implements ICommunityVegetablesServi
         }
         return r;
     }
+    @Override
+    public CommunityVegetablesBo selectByid(CommunityVegetablesBo cb) {
+
+        CommunityVegetablesBo communityVegetablesBo = communityVegetablesDao.selectByid(cb.getId());
+        return communityVegetablesBo;
+
+    }
+    @Override
+    public Boolean deleteId(CommunityVegetablesBo communityVegetablesBo) {
+        Result rt = new Result();
+        CommunityVegetablesBo cb =selectByid(communityVegetablesBo);
+        if (cb == null) {
+
+            rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
+            rt.setMsg("用户名不存在");
+            return false;
+
+        } else{
+            Integer rows = communityVegetablesDao.deleteByid(communityVegetablesBo);
+            return true;
+        }
+
+
+
+    }
+
+    @Override
+    public Boolean upadteId(CommunityVegetablesBo cb) {
+        Result rt = new Result();
+        CommunityVegetablesBo cb1 =selectByid(cb);
+        if (cb1 == null) {
+
+            rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
+            rt.setMsg("用户名不存在");
+            return false;
+
+        } else{
+            Integer rows = communityVegetablesDao.updateByCid(cb);
+            return true;
+        }
+
+    }
+
+
 }

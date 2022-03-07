@@ -3,11 +3,11 @@ package com.zj.communityVegetables.controller;
 import com.zj.communityVegetables.model.CommunityVegetablesBo;
 import com.zj.communityVegetables.sercice.ICommunityVegetablesService;
 import com.zj.config.Result.Result;
+import com.zj.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 
 @RestController
@@ -35,4 +35,39 @@ public class CommunityVegetablesController {
         }
         return rt;
     }
+    @PostMapping("/delete")
+    public JsonResult<Void> deleteId(@RequestBody CommunityVegetablesBo communityVegetablesBo) {
+        if (communityVegetablesService.deleteId(communityVegetablesBo)) {
+            JsonResult jsonResult = new JsonResult();
+
+            jsonResult.setMessage("");
+            jsonResult.setState(10000);
+            return jsonResult;
+        }
+        else {
+            JsonResult jsonResult = new JsonResult();
+
+            jsonResult.setMessage("");
+            jsonResult.setState(10002);
+            return jsonResult;
+        }
+    }
+    @PostMapping("/update")
+    public JsonResult<Void> upadteId(@RequestBody CommunityVegetablesBo communityVegetablesBo) {
+        if (communityVegetablesService.upadteId(communityVegetablesBo)) {
+            JsonResult jsonResult = new JsonResult();
+
+            jsonResult.setMessage("");
+            jsonResult.setState(10000);
+            return jsonResult;
+        }
+        else {
+            JsonResult jsonResult = new JsonResult();
+
+            jsonResult.setMessage("");
+            jsonResult.setState(10002);
+            return jsonResult;
+        }
+    }
+
 }

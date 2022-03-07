@@ -7,4 +7,10 @@ public interface ICommunityVegetablesService {
     Result addCommunityVegetables(CommunityVegetablesBo cb);
 
     Result getCommunityVegetablesList(CommunityVegetablesBo cb);
+
+    CommunityVegetablesBo selectByid(CommunityVegetablesBo cb);
+
+    Boolean deleteId(CommunityVegetablesBo cb);
+
+    Boolean upadteId(CommunityVegetablesBo cb);
 }

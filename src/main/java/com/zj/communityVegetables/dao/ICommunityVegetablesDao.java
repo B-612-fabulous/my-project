@@ -10,4 +10,13 @@ public interface ICommunityVegetablesDao {
     void addCommunityVegetables(CommunityVegetablesBo cb);
 
     List<CommunityVegetablesBo> getCommunityVegetablesList(CommunityVegetablesBo cb);
+
+    CommunityVegetablesBo selectByid(String id);
+
+    Integer deleteByid(CommunityVegetablesBo cb);
+
+    Integer updateByCid(CommunityVegetablesBo cb);
+
+
+
 }

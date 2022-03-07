@@ -5,9 +5,11 @@
 <mapper namespace="com.zj.communityVegetables.dao.ICommunityVegetablesDao">
     <insert id="addCommunityVegetables" parameterType="com.zj.communityVegetables.model.CommunityVegetablesBo">
         INSERT INTO
-            t_community_vegetables (id,title,price,fmImg,preferentialRules,commodityDesc,isSeckill,createDate,createPeople,isDelete)
+            t_community_vegetables (id,title,price,fmImg,preferentialRules,commodityDesc,
+            isSeckill,createDate,createPeople,isDelete)
         VALUES
-            (#{id},#{title},#{price},#{fmImg},#{preferentialRules},#{commodityDesc},#{isSeckill},#{createDate},#{createPeople},#{isDelete})
+            (#{id},#{title},#{price},#{fmImg},#{preferentialRules},#{commodityDesc},
+            #{isSeckill},#{createDate},#{createPeople},#{isDelete})
     </insert>
     <select id="getCommunityVegetablesList" parameterType="com.zj.communityVegetables.model.CommunityVegetablesBo" resultType="com.zj.communityVegetables.model.CommunityVegetablesBo">
         SELECT
@@ -18,4 +20,34 @@
             LEFT JOIN t_user tu ON tcv.createPeople=tu.id
         WHERE tcv.isDelete=0
     </select>
+
+    <select id="selectByid" parameterType="String"   resultType="com.zj.communityVegetables.model.CommunityVegetablesBo">
+        select * from t_community_vegetables where id=#{id}
+    </select>
+
+<!--  删除-->
+    <delete id="deleteByid" >
+        DELETE FROM
+            t_community_vegetables
+        WHERE
+            id=#{id}
+    </delete>
+    <update id="updateByCid">
+        UPDATE
+            t_community_vegetables
+        SET
+            title=#{title},
+            price=#{price},
+            fmImg=#{fmImg},
+            preferentialRules=#{preferentialRules},
+            commodityDesc=#{commodityDesc},
+            isSeckill=#{isSeckill}
+
+        WHERE
+            id=#{id}
+    </update>
+
+
+
+
 </mapper>
