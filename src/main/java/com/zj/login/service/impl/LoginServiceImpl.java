@@ -44,34 +44,24 @@ public class LoginServiceImpl implements ILoginService {
 
 
     @Override
-    public Boolean reg(UserBo userBo) {
+    public Result reg(UserBo userBo) {
         Result rt = new Result();
-
-//        String username = userBo.getUserName();
-//        String passWord = userBo.getPassWord();
-//        user.setUserName(username);
-//        user.setPassWord(passWord);
-
-//        String salt = UUID.randomUUID().toString().toUpperCase();
-//        String md5Password = getMd5PassWord(user.getPassWord(), salt);
-//        user.setPassWord(password);
         UserBo userBo1 = selectByusername(userBo);
         if (userBo1 != null) {
-
-//            throw new UsernameDuplicateException("尝试注册的用户名[" + username + "]已经被占用");
-//            System.out.println("尝试注册的用户名[" + username + "]已经被占用");
-            rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
+            rt.setState(GlobalConstant.ERROR_STATE);
             rt.setMsg("用户名已存在");
-            return false;
-
         } else{
-            Integer rows = loginDao.insert(userBo);
-            return true;
+            try {
+                loginDao.insert(userBo);
+                rt.setState(GlobalConstant.SUCCE_STATE);
+                rt.setMsg("注册成功");
+            } catch (Exception e) {
+                e.printStackTrace();
+                rt.setState(GlobalConstant.ERROR_STATE);
+                rt.setMsg("注册失败");
+            }
         }
-
-
-
-
+        return rt;
     }
 
     @Override

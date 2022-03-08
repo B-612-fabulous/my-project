@@ -25,23 +25,15 @@ public class LoginController {
         return rt;
     }
     @PostMapping("/reg")
-    public JsonResult reg(@RequestBody UserBo user) {
+    public Result reg(@RequestBody UserBo user) {
+        Result rt = null;
         // 调用业务对象执行注册
-        if (loginService.reg(user)) {
-            JsonResult jsonResult = new JsonResult();
-
-            jsonResult.setMessage("");
-            jsonResult.setState(10000);
-            return jsonResult;
+        try {
+            rt=loginService.reg(user);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else {
-            JsonResult jsonResult = new JsonResult();
-
-            jsonResult.setMessage("");
-            jsonResult.setState(10002);
-            return jsonResult;
-        }
-
+        return rt;
 
 
     }
