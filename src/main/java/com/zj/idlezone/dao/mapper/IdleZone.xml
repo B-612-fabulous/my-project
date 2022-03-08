@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zj.idlezone.dao.IIdleZoneDao">
+    <insert id="addIIdleZone" parameterType="com.zj.idlezone.model.IdleZoneBo">
+        INSERT INTO
+            t_idle_zone (id,price,pic,fmImg,commodityDesc,
+            createDate,createPeople,isDelete)
+        VALUES
+            (#{id},#{price},#{pic},#{fmImg},#{commodityDesc},
+            #{createDate},#{createPeople},#{isDelete})
+    </insert>
+<!--    <select id="getIdleZoneList" parameterType="com.zj.idlezone.model.IdleZoneBo" resultType="com.zj.idlezone.model.IdleZoneBo">-->
+<!--        SELECT-->
+<!--            tcv.*,-->
+<!--            tu.trueName-->
+<!--        FROM-->
+<!--            t_community_vegetables tcv-->
+<!--            LEFT JOIN t_user tu ON tcv.createPeople=tu.id-->
+<!--        WHERE tcv.isDelete=0-->
+<!--    </select>-->
+
+    <select id="selectIZByid" parameterType="String"   resultType="com.zj.idlezone.model.IdleZoneBo">
+        select * from t_idle_zone where id=#{id}
+    </select>
+
+<!--      删除-->
+    <delete id="deleteIZByid" >
+        DELETE FROM
+            t_idle_zone
+        WHERE
+            id=#{id}
+    </delete>
+
+    <update id="updateIZByCid">
+        UPDATE
+            t_idle_zone
+        SET
+            price=#{price},
+            fmImg=#{fmImg},
+            commodityDesc=#{commodityDesc},
+            pic=#{pic}
+
+        WHERE
+            id=#{id}
+    </update>
+
+
+
+
+</mapper>
