@@ -35,7 +35,7 @@ public class CommunityVegetablesController {
         }
         return rt;
     }
-    @PostMapping("/cb/delete")
+    @PostMapping("/deleteCommunityVegetablesList")
     public JsonResult<Void> deleteId(@RequestBody CommunityVegetablesBo communityVegetablesBo) {
         if (communityVegetablesService.deleteId(communityVegetablesBo)) {
             JsonResult jsonResult = new JsonResult();
@@ -52,7 +52,7 @@ public class CommunityVegetablesController {
             return jsonResult;
         }
     }
-    @PostMapping("/cb/update")
+    @PostMapping("/updateCommunityVegetablesList")
     public JsonResult<Void> upadteId(@RequestBody CommunityVegetablesBo communityVegetablesBo) {
         if (communityVegetablesService.upadteId(communityVegetablesBo)) {
             JsonResult jsonResult = new JsonResult();

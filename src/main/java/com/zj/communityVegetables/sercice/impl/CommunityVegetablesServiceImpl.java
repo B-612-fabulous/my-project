@@ -65,11 +65,9 @@ public class CommunityVegetablesServiceImpl implements ICommunityVegetablesServi
         Result rt = new Result();
         CommunityVegetablesBo cb =selectByid(communityVegetablesBo);
         if (cb == null) {
-
             rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
             rt.setMsg("用户名不存在");
             return false;
-
         } else{
             Integer rows = communityVegetablesDao.deleteByid(communityVegetablesBo);
             return true;
@@ -84,12 +82,15 @@ public class CommunityVegetablesServiceImpl implements ICommunityVegetablesServi
         Result rt = new Result();
         CommunityVegetablesBo cb1 =selectByid(cb);
         if (cb1 == null) {
-
             rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
             rt.setMsg("用户名不存在");
             return false;
-
         } else{
+            if(cb.getIsSeckillFlag()==1){
+                cb.setSeckill(true);
+            }else{
+                cb.setSeckill(false);
+            }
             Integer rows = communityVegetablesDao.updateByCid(cb);
             return true;
         }
