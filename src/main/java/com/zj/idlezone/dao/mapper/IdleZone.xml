@@ -11,15 +11,15 @@
             (#{id},#{price},#{pic},#{fmImg},#{commodityDesc},
             #{createDate},#{createPeople},#{isDelete})
     </insert>
-<!--    <select id="getIdleZoneList" parameterType="com.zj.idlezone.model.IdleZoneBo" resultType="com.zj.idlezone.model.IdleZoneBo">-->
-<!--        SELECT-->
-<!--            tcv.*,-->
-<!--            tu.trueName-->
-<!--        FROM-->
-<!--            t_community_vegetables tcv-->
-<!--            LEFT JOIN t_user tu ON tcv.createPeople=tu.id-->
-<!--        WHERE tcv.isDelete=0-->
-<!--    </select>-->
+    <select id="getIdleZoneList" parameterType="com.zj.idlezone.model.IdleZoneBo" resultType="com.zj.idlezone.model.IdleZoneBo">
+        SELECT
+            tcv.*,
+            tu.trueName
+        FROM
+            t_idle_zone tcv
+            LEFT JOIN t_user tu ON tcv.createPeople=tu.id
+        WHERE tcv.isDelete=0
+    </select>
 
     <select id="selectIZByid" parameterType="String"   resultType="com.zj.idlezone.model.IdleZoneBo">
         select * from t_idle_zone where id=#{id}

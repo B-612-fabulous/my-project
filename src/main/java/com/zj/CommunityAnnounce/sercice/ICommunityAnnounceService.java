@@ -4,9 +4,8 @@ import com.zj.config.Result.Result;
 public interface ICommunityAnnounceService {
     Result addICommunityAnnounce1(CommunityAnnounceBo ca);
 
-//    Result getCommunityVegetablesList(CommunityVegetablesBo cb);
+  Result getCommunityAnnounceList(CommunityAnnounceBo ca);
   CommunityAnnounceBo selectByid(CommunityAnnounceBo ca);
-//
   Boolean deleteId(CommunityAnnounceBo ca);
   Boolean upadteId(CommunityAnnounceBo ca);
 }

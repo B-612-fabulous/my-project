@@ -8,17 +8,8 @@ public class CommunityAnnounceBo {
     private String title;//标题
     private String announcement;//内容
     private String createDate;//创建时间
-
-    public CommunityAnnounceBo() {
-
-    }
-
-    public CommunityAnnounceBo(String id, String title, String announcement, String createDate) {
-        this.id = id;
-        this.title = title;
-        this.announcement = announcement;
-        this.createDate = createDate;
-    }
+    private String createPeople;//创建人
+    private int isDelete;//是否删除 1删除 0未删除
 
     public String getId() {
         return id;
@@ -52,29 +43,19 @@ public class CommunityAnnounceBo {
         this.createDate = createDate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CommunityAnnounceBo that = (CommunityAnnounceBo) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(title, that.title) &&
-                Objects.equals(announcement, that.announcement) &&
-                Objects.equals(createDate, that.createDate);
+    public String getCreatePeople() {
+        return createPeople;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, announcement, createDate);
+    public void setCreatePeople(String createPeople) {
+        this.createPeople = createPeople;
     }
 
-    @Override
-    public String toString() {
-        return "CommunityAnnounceBo{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", announcement='" + announcement + '\'' +
-                ", createDate='" + createDate + '\'' +
-                '}';
+    public int getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(int isDelete) {
+        this.isDelete = isDelete;
     }
 }

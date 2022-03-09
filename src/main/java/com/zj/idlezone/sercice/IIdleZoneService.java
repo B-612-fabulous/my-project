@@ -5,7 +5,7 @@ import com.zj.idlezone.model.IdleZoneBo;
 public interface IIdleZoneService {
     Result addIIdleZone(IdleZoneBo idleZoneBo);
 
-//    Result getCommunityVegetablesList(CommunityVegetablesBo cb);
+  Result getIdleZoneList(IdleZoneBo idleZoneBo);
 //
     IdleZoneBo selectByid(IdleZoneBo idleZoneBo);
 

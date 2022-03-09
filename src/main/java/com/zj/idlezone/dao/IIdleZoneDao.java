@@ -7,7 +7,10 @@ import java.util.List;
 @Repository
 public interface IIdleZoneDao {
 
+    List<IIdleZoneDao> getIdleZoneList(IdleZoneBo ib);
+
     void addIIdleZone(IdleZoneBo ib);
+
 
     IdleZoneBo selectIZByid(String id);
 

@@ -2,7 +2,6 @@ package com.zj.CommunityAnnounce.controller;
 import com.zj.CommunityAnnounce.model.CommunityAnnounceBo;
 import com.zj.CommunityAnnounce.sercice.ICommunityAnnounceService;
 import com.zj.config.Result.Result;
-import com.zj.idlezone.model.IdleZoneBo;
 import com.zj.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,18 @@ import javax.servlet.http.HttpSession;
 public class CommunityAccounceController {
     @Autowired
     private ICommunityAnnounceService iCommunityAnnounceService;
+
+
+    @PostMapping("/getCommunityAnnounceList")
+    public Result getCommunityAnnounceList(@RequestBody CommunityAnnounceBo ca) {
+        Result rt = null;
+        try {
+            rt = iCommunityAnnounceService.getCommunityAnnounceList(ca);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rt;
+    }
     @PostMapping("/ca/addCommunityAnnounce")
     public Result addICommunityAnnounce1 (@RequestBody CommunityAnnounceBo ca){
         Result rt = null;

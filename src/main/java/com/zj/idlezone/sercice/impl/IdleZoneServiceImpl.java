@@ -10,6 +10,8 @@ import com.zj.idlezone.sercice.IIdleZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("idleZoneService")
 public class IdleZoneServiceImpl implements IIdleZoneService {
     @Autowired
@@ -25,6 +27,21 @@ public class IdleZoneServiceImpl implements IIdleZoneService {
             iIdleZoneDao.addIIdleZone(ib);
 
             r.setState(GlobalConstant.SUCCE_STATE);
+        } catch (Exception e) {
+            r.setMsg(GlobalConstant.ERROR_COMMON_MSG);
+            r.setState(GlobalConstant.ERROR_STATE);
+            e.printStackTrace();
+        }
+        return r;
+    }
+
+    @Override
+    public Result getIdleZoneList(IdleZoneBo idleZoneBo) {
+        Result r = new Result();
+        try {
+            List<IIdleZoneDao> ibList = iIdleZoneDao.getIdleZoneList(idleZoneBo);
+            r.setState(GlobalConstant.SUCCE_STATE);
+            r.setData(ibList);
         } catch (Exception e) {
             r.setMsg(GlobalConstant.ERROR_COMMON_MSG);
             r.setState(GlobalConstant.ERROR_STATE);

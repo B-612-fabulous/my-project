@@ -5,19 +5,19 @@
 <mapper namespace="com.zj.CommunityAnnounce.dao.ICommunityAnnounceDao">
     <insert id="addICommunityAnnounce" parameterType="com.zj.CommunityAnnounce.model.CommunityAnnounceBo">
         INSERT INTO
-            t_community_announce (id,title,announcement,createDate)
+            t_community_announce (id,title,announcement,createDate,createPeople,isDelete)
         VALUES
-            (#{id},#{title},#{announcement},#{createDate})
+            (#{id},#{title},#{announcement},#{createDate},#{createPeople},#{isDelete})
     </insert>
-<!--    <select id="getIdleZoneList" parameterType="com.zj.idlezone.model.IdleZoneBo" resultType="com.zj.idlezone.model.IdleZoneBo">-->
-<!--        SELECT-->
-<!--            tcv.*,-->
-<!--            tu.trueName-->
-<!--        FROM-->
-<!--            t_community_vegetables tcv-->
-<!--            LEFT JOIN t_user tu ON tcv.createPeople=tu.id-->
-<!--        WHERE tcv.isDelete=0-->
-<!--    </select>-->
+    <select id="getCommunityAnnounceList" parameterType="com.zj.CommunityAnnounce.model.CommunityAnnounceBo" resultType="com.zj.CommunityAnnounce.model.CommunityAnnounceBo">
+        SELECT
+            tcv.*,
+            tu.trueName
+        FROM
+             t_community_announce tcv
+            LEFT JOIN t_user tu ON tcv.createPeople=tu.id
+        WHERE tcv.isDelete=0
+    </select>
 
     <select id="selectIZByid" parameterType="String"   resultType="com.zj.CommunityAnnounce.model.CommunityAnnounceBo">
         select * from t_community_announce where id=#{id}
