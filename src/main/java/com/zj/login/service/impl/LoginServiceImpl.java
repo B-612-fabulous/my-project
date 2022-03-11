@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sun.security.util.Password;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service("loginService")
@@ -41,6 +42,20 @@ public class LoginServiceImpl implements ILoginService {
         return rt;
     }
 
+    @Override
+    public Result getUserList(UserBo user) {
+        Result r = new Result();
+        try {
+            List<UserBo> userList = loginDao.getUserList(user);
+            r.setState(GlobalConstant.SUCCE_STATE);
+            r.setData(userList);
+        } catch (Exception e) {
+            r.setMsg(GlobalConstant.ERROR_COMMON_MSG);
+            r.setState(GlobalConstant.ERROR_STATE);
+            e.printStackTrace();
+        }
+        return r;
+    }
 
 
     @Override
@@ -71,7 +86,31 @@ public class LoginServiceImpl implements ILoginService {
 
     }
 
+    @Override
+    public Boolean deleteByid(UserBo user) {
+        Result rt = new Result();
+        Integer rows=loginDao.deleteByid(user);
+        if (rows==1){
+            return true;
+        }
+        else {
+            return false;
+        }
 
+
+    }
+
+    @Override
+    public Boolean updateByid(UserBo userBo) {
+        UserBo userBo1=loginDao.selectByusername(userBo.getUserName());
+        if(userBo1==null){
+            Integer rows=loginDao.updateByid(userBo);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 
 }
