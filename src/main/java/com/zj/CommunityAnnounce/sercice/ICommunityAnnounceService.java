@@ -5,7 +5,7 @@ public interface ICommunityAnnounceService {
     Result addICommunityAnnounce1(CommunityAnnounceBo ca);
 
   Result getCommunityAnnounceList(CommunityAnnounceBo ca);
-  CommunityAnnounceBo selectByid(CommunityAnnounceBo ca);
+  Result selectByid(CommunityAnnounceBo ca);
   Boolean deleteId(CommunityAnnounceBo ca);
   Boolean upadteId(CommunityAnnounceBo ca);
 }

@@ -10,7 +10,7 @@ public interface ICommunityAnnounceDao {
 
     void addICommunityAnnounce(CommunityAnnounceBo ca);
     List<CommunityVegetablesBo> getCommunityAnnounceList(CommunityAnnounceBo ca);
-    CommunityAnnounceBo selectIZByid(String id);
+    List<CommunityVegetablesBo> selectIZByid(CommunityAnnounceBo ca);
 
    Integer deleteCAByid(CommunityAnnounceBo ca);
    Integer updateIZByCid(CommunityAnnounceBo ca);

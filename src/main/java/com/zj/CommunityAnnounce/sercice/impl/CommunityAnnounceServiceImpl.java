@@ -50,33 +50,51 @@ public class CommunityAnnounceServiceImpl implements  ICommunityAnnounceService 
     }
 
     @Override
-    public CommunityAnnounceBo selectByid(CommunityAnnounceBo ca) {
-        CommunityAnnounceBo ca1=communityAnnounceDao.selectIZByid(ca.getId());
-        return ca1;
+    public Result selectByid(CommunityAnnounceBo ca) {
+        Result r = new Result();
+        try {
+            List<CommunityVegetablesBo> caList = communityAnnounceDao.selectIZByid(ca);
+            r.setState(GlobalConstant.SUCCE_STATE);
+            r.setData(caList);
+        } catch (Exception e) {
+            r.setMsg(GlobalConstant.ERROR_COMMON_MSG);
+            r.setState(GlobalConstant.ERROR_STATE);
+            e.printStackTrace();
+        }
+        return r;
     }
 
     @Override
     public Boolean deleteId(CommunityAnnounceBo ca) {
+        Result r = new Result();
+
+//       communityAnnounceDao.selectByid(ca);
         Integer rows = communityAnnounceDao.deleteCAByid(ca);
-         return true;
+        if (rows==1){
+            return true;
+        }
+        else {
+            return false;
+        }
+
 
     }
 
     @Override
     public Boolean upadteId(CommunityAnnounceBo ca) {
 
-        Result rt = new Result();
-        CommunityAnnounceBo ca1 =selectByid(ca);
-        if (ca1 != null) {
-
-            rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
-            rt.setMsg("用户名不存在");
-            return false;
-
-        } else{
-            Integer rows = communityAnnounceDao.updateIZByCid(ca1);
+//        Result rt = new Result();
+//        CommunityAnnounceBo ca1 =selectByid(ca);
+//        if (ca1 != null) {
+//
+//            rt.setCode(GlobalConstant.LOGIN_NOT_FIND_USER);
+//            rt.setMsg("用户名不存在");
+//            return false;
+//
+//        } else{
+            Integer rows = communityAnnounceDao.updateIZByCid(ca);
             return true;
-        }
+//        }
     }
 
 

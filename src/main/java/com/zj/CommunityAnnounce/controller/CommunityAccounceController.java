@@ -26,7 +26,7 @@ public class CommunityAccounceController {
         }
         return rt;
     }
-    @PostMapping("/ca/addCommunityAnnounce")
+    @PostMapping("/addCommunityAnnounce")
     public Result addICommunityAnnounce1 (@RequestBody CommunityAnnounceBo ca){
         Result rt = null;
         try {
@@ -37,7 +37,7 @@ public class CommunityAccounceController {
         return rt;
     }
 
-    @PostMapping("/ca/delete")
+    @PostMapping("/deleteCommunityAnnounce")
     public JsonResult<Void> deleteId(@RequestBody CommunityAnnounceBo ca) {
         if (iCommunityAnnounceService.deleteId(ca)) {
             JsonResult jsonResult = new JsonResult();
@@ -55,7 +55,7 @@ public class CommunityAccounceController {
         }
 
     }
-    @PostMapping("/ca/update")
+    @PostMapping("/updateCommunityAnnounce")
     public JsonResult<Void> upadteId(@RequestBody CommunityAnnounceBo ca) {
         if (iCommunityAnnounceService.upadteId(ca)) {
             JsonResult jsonResult = new JsonResult();
@@ -71,5 +71,15 @@ public class CommunityAccounceController {
             jsonResult.setState(10002);
             return jsonResult;
         }
+    }
+    @PostMapping("/searchCommunityAnnounce")
+    public Result searchCommunityAnnounce(@RequestBody CommunityAnnounceBo ca) {
+        Result rt = null;
+        try {
+            rt = iCommunityAnnounceService.selectByid(ca);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rt;
     }
 }
