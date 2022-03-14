@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zj.housekeepingservices.dao.IHousekeepingServicesDao">
+    <insert id="addHousekeepingServices" parameterType="com.zj.housekeepingservices.model.HousekeepingServicesBo">
+        INSERT INTO
+            t_housekeeping_services (id,title,phone,address,price,
+            createDate,createPeople,isDelete,dotime)
+        VALUES
+            (#{id},#{title},#{phone},#{address},#{price},
+            #{createDate},#{createPeople},#{isDelete},#{dotime})
+    </insert>
+    <select id="getHousekeepingServicesList" parameterType="com.zj.housekeepingservices.model.HousekeepingServicesBo" resultType="com.zj.housekeepingservices.model.HousekeepingServicesBo">
+        SELECT
+            tcv.*,
+            tu.trueName
+        FROM
+            t_housekeeping_services tcv
+            LEFT JOIN t_user tu ON tcv.createPeople=tu.id
+        WHERE tcv.isDelete=0
+    </select>
+
+<!--    <select id="selectIZByid" parameterType="String"   resultType="com.zj.idlezone.model.IdleZoneBo">-->
+<!--        select * from t_idle_zone where id=#{id}-->
+<!--    </select>-->
+
+<!--      删除-->
+    <delete id="deleteHSByid" >
+        DELETE FROM
+            t_housekeeping_services
+        WHERE
+            id=#{id}
+    </delete>
+
+    <update id="updateHSByid">
+        UPDATE
+            t_housekeeping_services
+        SET
+            title=#{title},
+            address=#{address},
+            phone=#{phone},
+            price=#{price},
+            dotime=#{dotime}
+
+        WHERE
+            id=#{id}
+    </update>
+
+
+
+
+</mapper>
