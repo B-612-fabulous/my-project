@@ -27,7 +27,7 @@ public class IdleZoneController{
     }
 
 
-    @PostMapping("/iz/addIIdleZone")
+    @PostMapping("/addIIdleZone")
     public Result addIIdleZone(@RequestBody IdleZoneBo ib){
         Result rt = null;
         try {
@@ -38,7 +38,7 @@ public class IdleZoneController{
         return rt;
     }
 
-    @PostMapping("/iz/delete")
+    @PostMapping("/deleteIdleZone")
     public JsonResult<Void> deleteId(@RequestBody IdleZoneBo idleZoneBo) {
         if (iIdleZoneService.deleteId(idleZoneBo)) {
             JsonResult jsonResult = new JsonResult();
@@ -56,7 +56,7 @@ public class IdleZoneController{
         }
 
     }
-    @PostMapping("/iz/update")
+    @PostMapping("/updateIdleZone")
     public JsonResult<Void> upadteId(@RequestBody IdleZoneBo idleZoneBo) {
         if (iIdleZoneService.upadteId(idleZoneBo)) {
             JsonResult jsonResult = new JsonResult();
