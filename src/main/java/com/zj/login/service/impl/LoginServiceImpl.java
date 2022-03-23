@@ -21,9 +21,10 @@ public class LoginServiceImpl implements ILoginService {
     public Result  getLogin(UserBo user) {//进行登录逻辑处理
         Result rt = new Result();
         try {
-//            String passWord = user.getPassWord();
-//            String newPwd = MD5Util.string2MD5(passWord);
+            String passWord = user.getPassWord();
+            String newPwd = MD5Util.string2MD5(passWord);
 //            System.out.println(newPwd);
+            user.setPassWord(newPwd);
             UserBo loginUser = loginDao.getLogin(user);
             if(loginUser != null){//用户存在,保存session信息
                 rt.setCode(GlobalConstant.LOGIN_SUCCESS);
@@ -67,6 +68,7 @@ public class LoginServiceImpl implements ILoginService {
             rt.setMsg("用户名已存在");
         } else{
             try {
+                userBo.setPassWord(MD5Util.string2MD5(userBo.getPassWord()));
                 loginDao.insert(userBo);
                 rt.setState(GlobalConstant.SUCCE_STATE);
                 rt.setMsg("注册成功");
