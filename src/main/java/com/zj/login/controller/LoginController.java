@@ -82,5 +82,22 @@ public class LoginController {
         }
 
     }
+
+    @PostMapping("/updateByTruename")
+    public JsonResult<Void> updateByTruename(@RequestBody UserBo user) {
+        if (loginService.updateByUserName(user)) {
+            JsonResult jsonResult = new JsonResult();
+            jsonResult.setMessage("success");
+            jsonResult.setState(10000);
+            return jsonResult;
+        }
+        else {
+            JsonResult jsonResult = new JsonResult();
+            jsonResult.setMessage("falied");
+            jsonResult.setState(10002);
+            return jsonResult;
+        }
+
+    }
 }
 

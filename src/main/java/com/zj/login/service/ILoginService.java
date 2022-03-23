@@ -11,6 +11,7 @@ public interface ILoginService {
     UserBo selectByusername(UserBo userBo);
     Boolean  deleteByid(UserBo user);
     Boolean updateByid(UserBo userBo);
+    Boolean updateByUserName(UserBo userBo);
 
 
 }

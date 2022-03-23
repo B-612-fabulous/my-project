@@ -15,5 +15,6 @@ public interface ILoginDao {
 
      Integer deleteByid(UserBo user);
      Integer updateByid(UserBo userBo);
+     Integer updateByUserName(UserBo userBo);
 
 }

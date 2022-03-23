@@ -47,6 +47,15 @@
             id=#{id}
     </update>
 
+    <update id="updateByUserName">
+        UPDATE
+            t_user
+        SET
+            passWord=#{passWord}
+        WHERE
+             trueName=#{trueName} and userName=#{userName} and phone=#{phone}
+    </update>
+
 
 
 

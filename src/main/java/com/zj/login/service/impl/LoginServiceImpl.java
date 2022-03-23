@@ -102,14 +102,26 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public Boolean updateByid(UserBo userBo) {
-        UserBo userBo1=loginDao.selectByusername(userBo.getUserName());
-        if(userBo1==null){
+//        if(userBo1==null){
             Integer rows=loginDao.updateByid(userBo);
+            return true;
+//        }
+//        else {
+//            return false;
+//        }
+    }
+
+    @Override
+    public Boolean updateByUserName(UserBo userBo) {
+//        if(userBo1==null){
+        Integer rows1=loginDao.updateByUserName(userBo);
+        if (rows1==1){
             return true;
         }
         else {
             return false;
         }
+
     }
 
 
