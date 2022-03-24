@@ -80,6 +80,19 @@ public class LoginServiceImpl implements ILoginService {
         }
         return rt;
     }
+    @Override
+    public Boolean updateByUserName(UserBo userBo) {
+//        Result rt1=new Result();
+        userBo.setPassWord(MD5Util.string2MD5(userBo.getPassWord()));
+        Integer rows1=loginDao.updateByUserName(userBo);
+        if (rows1==1){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
 
     @Override
     public UserBo selectByusername(UserBo userBo) {
@@ -113,18 +126,7 @@ public class LoginServiceImpl implements ILoginService {
 //        }
     }
 
-    @Override
-    public Boolean updateByUserName(UserBo userBo) {
-//        if(userBo1==null){
-        Integer rows1=loginDao.updateByUserName(userBo);
-        if (rows1==1){
-            return true;
-        }
-        else {
-            return false;
-        }
 
-    }
 
 
 }
