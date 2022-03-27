@@ -1,6 +1,5 @@
 package com.zj.login.controller;
 
-import com.zj.CommunityAnnounce.model.CommunityAnnounceBo;
 import com.zj.config.Result.Result;
 import com.zj.login.model.UserBo;
 import com.zj.login.service.ILoginService;

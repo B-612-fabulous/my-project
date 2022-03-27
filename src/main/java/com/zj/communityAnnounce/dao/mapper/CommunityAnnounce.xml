@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zj.communityAnnounce.dao.ICommunityAnnounceDao">
+    <insert id="addICommunityAnnounce" parameterType="com.zj.communityAnnounce.model.CommunityAnnounceBo">
+        INSERT INTO
+            t_community_announce (id,title,announcement,createDate,createPeople,isDelete)
+        VALUES
+            (#{id},#{title},#{announcement},#{createDate},#{createPeople},#{isDelete})
+    </insert>
+    <select id="getCommunityAnnounceList" parameterType="com.zj.communityAnnounce.model.CommunityAnnounceBo" resultType="com.zj.communityAnnounce.model.CommunityAnnounceBo">
+        SELECT
+            tcv.*,
+            tu.trueName
+        FROM
+             t_community_announce tcv
+            LEFT JOIN t_user tu ON tcv.createPeople=tu.id
+        WHERE tcv.isDelete=0
+    </select>
+
+    <select id="selectIZByid" parameterType="String"   resultType="com.zj.communityAnnounce.model.CommunityAnnounceBo">
+        select * from t_community_announce where id=#{id}
+    </select>
+
+<!--      删除-->
+    <delete id="deleteCAByid" >
+        DELETE FROM
+            t_community_announce
+        WHERE
+            id=#{id}
+    </delete>
+
+    <update id="updateIZByCid">
+        UPDATE
+            t_community_announce
+        SET
+            title=#{title},
+            announcement=#{announcement}
+
+        WHERE
+            id=#{id}
+    </update>
+
+
+
+
+</mapper>

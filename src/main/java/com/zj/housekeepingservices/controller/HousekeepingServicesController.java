@@ -1,14 +1,10 @@
 package com.zj.housekeepingservices.controller;
 import com.zj.config.Result.Result;
 import com.zj.housekeepingservices.model.HousekeepingServicesBo;
-import com.zj.housekeepingservices.sercice.IHousekeepingServiceservice;
-import com.zj.idlezone.model.IdleZoneBo;
-import com.zj.idlezone.sercice.IIdleZoneService;
+import com.zj.housekeepingservices.service.IHousekeepingServiceservice;
 import com.zj.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 
 @RestController

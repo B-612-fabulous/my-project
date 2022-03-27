@@ -1,13 +1,11 @@
 package com.zj.communityVegetables.controller;
 
 import com.zj.communityVegetables.model.CommunityVegetablesBo;
-import com.zj.communityVegetables.sercice.ICommunityVegetablesService;
+import com.zj.communityVegetables.service.ICommunityVegetablesService;
 import com.zj.config.Result.Result;
 import com.zj.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 
 @RestController

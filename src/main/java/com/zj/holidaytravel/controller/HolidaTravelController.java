@@ -1,16 +1,10 @@
 package com.zj.holidaytravel.controller;
 import com.zj.config.Result.Result;
 import com.zj.holidaytravel.model.HolidaTtravelBo;
-import com.zj.holidaytravel.sercice.IHolidaTtravelservice;
-import com.zj.housekeepingservices.model.HousekeepingServicesBo;
-import com.zj.housekeepingservices.sercice.IHousekeepingServiceservice;
-import com.zj.idlezone.model.IdleZoneBo;
-import com.zj.idlezone.sercice.IIdleZoneService;
+import com.zj.holidaytravel.service.IHolidaTtravelservice;
 import com.zj.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpSession;
 
 
 @RestController

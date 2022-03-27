@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zj.order.dao.IOrderDao">
+    <insert id="addOrder" parameterType="java.util.HashMap">
+        INSERT INTO
+            t_order (id,createPeople,sendAddr,orderState,isEvaluate,createDate,updatePeople,
+                    updateDate,evaluateDate,evaluateContent,isDelete)
+        VALUES
+            (#{id},#{createPeople},#{sendAddr},#{orderState},#{isEvaluate},#{createDate},#{updatePeople},
+            #{updateDate},#{evaluateDate},#{evaluateContent},#{isDelete})
+    </insert>
+    <insert id="addOrderDetail" parameterType="java.util.List">
+            insert into t_order_detail(
+                id,
+                orderId,
+                price,
+                cartNumber,
+                fmImg,
+                preferentialRules,
+                commodityDesc,
+                isSeckill,
+                title,
+                vegetablesId,
+                createPeople,
+                createDate,
+                isDelete
+            ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.id},
+                #{item.orderId},
+                #{item.price},
+                #{item.cartNumber},
+                #{item.fmImg},
+                #{item.preferentialRules},
+                #{item.commodityDesc},
+                #{item.isSeckill},
+                #{item.title},
+                #{item.vegetablesId},
+                #{item.createPeople},
+                #{item.createDate},
+                #{item.isDelete}
+            )
+        </foreach>
+    </insert>
+
+
+
+</mapper>
