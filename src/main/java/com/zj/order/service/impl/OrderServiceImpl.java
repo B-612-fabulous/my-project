@@ -2,11 +2,13 @@ package com.zj.order.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.zj.communityVegetables.model.CommunityVegetablesBo;
 import com.zj.config.Result.Result;
 import com.zj.config.common.GlobalConstant;
 import com.zj.config.common.TimeUtil;
 import com.zj.config.common.UuidUtil;
 import com.zj.order.dao.IOrderDao;
+import com.zj.order.model.OrderDetailBo;
 import com.zj.order.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,5 +66,32 @@ public class OrderServiceImpl implements IOrderService {
             rt.setState(GlobalConstant.ERROR_STATE);
         }
         return rt;
+    }
+
+    @Override
+    public Result getOrderDetailList(OrderDetailBo orderDetailBo) {
+
+      Result r = new Result();
+       try {
+          List<OrderDetailBo> odList = orderDao.getOrderDetailList(orderDetailBo);
+            r.setState(GlobalConstant.SUCCE_STATE);
+           r.setData(odList);
+        } catch (Exception e) {
+            r.setMsg(GlobalConstant.ERROR_COMMON_MSG);
+            r.setState(GlobalConstant.ERROR_STATE);
+            e.printStackTrace();
+        }
+        return r;
+    }
+
+    @Override
+    public Boolean deleteorderid(OrderDetailBo orderDetailBo) {
+        Integer rows = orderDao.deleteorderid(orderDetailBo);
+        if (rows==1){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

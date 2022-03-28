@@ -3,6 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zj.order.dao.IOrderDao">
+
+
+    <select id="getOrderDetailList" parameterType="com.zj.order.model.OrderDetailBo" resultType="com.zj.order.model.OrderDetailBo" >
+        SELECT
+            *
+        FROM
+             t_order_detail
+        WHERE createPeople=#{createPeople}
+    </select>
+    <delete id="deleteorderid" >
+        DELETE FROM
+            t_order_detail
+        WHERE
+            id=#{id}
+    </delete>
     <insert id="addOrder" parameterType="java.util.HashMap">
         INSERT INTO
             t_order (id,createPeople,sendAddr,orderState,isEvaluate,createDate,updatePeople,
@@ -45,6 +60,7 @@
             )
         </foreach>
     </insert>
+
 
 
 
